@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Магазин</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" href="logo_black.png"image/png" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="#">Главная</a></li>
+					<li>
+						<a href="#" onclick="toggleCart()"
+							>🛒 Корзина (<span id="cartCount">0</span>)</a
+						>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<h1>Каталог товаров</h1>
+		<div id="productsContainer"></div>
+
+		<!-- Корзина -->
+		<div id="cartModal" class="cart-modal" style="display: none">
+			<div class="cart-content">
+				<h2>Корзина</h2>
+				<div id="cartContainer"></div>
+				<button onclick="clearCart()">Очистить корзину</button>
+				<button onclick="closeCart()">Закрыть</button>
+				<button onclick="sendOrderToTelegram()">Перейти к заказу</button>
+			</div>
+		</div>
+
+		<script src="https://apis.google.com/js/api.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
