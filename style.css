@@ -138,3 +138,21 @@ button:hover {
 	max-height: 80vh; /* Ограничение по высоте */
 	overflow-y: auto; /* Прокрутка при большом количестве товаров */
 }
+#scrollToTopBtn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #333;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: none;
+	font-size: 16px;
+	z-index: 1000;
+}
+
+#scrollToTopBtn:hover {
+	background-color: #555;
+}

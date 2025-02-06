@@ -20,7 +20,7 @@ function start() {
 
 function loadSheetData() {
 	var spreadsheetId = '1Xj6SNVMKKgCS3jDN5_FLwmGfwEQ_eTl4yOmC4EbXVPk'
-	var range = 'Sheet1!A1:D10'
+	var range = 'Sheet1!A1:D20'
 
 	gapi.client.sheets.spreadsheets.values
 		.get({
@@ -224,4 +224,19 @@ window.addEventListener('scroll', function () {
 	}
 
 	lastScrollTop = scrollTop
+})
+document.addEventListener('DOMContentLoaded', function () {
+	const button = document.getElementById('scrollToTopBtn')
+
+	window.addEventListener('scroll', function () {
+		if (window.scrollY > 300) {
+			button.style.display = 'block'
+		} else {
+			button.style.display = 'none'
+		}
+	})
+
+	button.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	})
 })
