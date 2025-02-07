@@ -217,14 +217,15 @@ const header = document.querySelector('header')
 window.addEventListener('scroll', function () {
 	let scrollTop = window.scrollY || document.documentElement.scrollTop
 
-	if (scrollTop > lastScrollTop) {
-		header.style.top = '-60px' // Прячем хедер
+	if (scrollTop > lastScrollTop && scrollTop > 50) {
+		header.style.transform = 'translateY(-100%)' // Прячем хедер
 	} else {
-		header.style.top = '0' // Показываем хедер
+		header.style.transform = 'translateY(0)' // Показываем хедер
 	}
 
 	lastScrollTop = scrollTop
 })
+
 document.addEventListener('DOMContentLoaded', function () {
 	const button = document.getElementById('scrollToTopBtn')
 
