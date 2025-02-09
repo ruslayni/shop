@@ -9,12 +9,12 @@ function start() {
 			],
 		})
 		.then(function () {
-			console.log('API Initialized')
+			console.log('API ініціалізовано')
 			loadSheetData()
 			updateCartUI()
 		})
 		.catch(function (error) {
-			console.log('Error initializing API:', error)
+			console.log('Помилка ініціалізації API:', error)
 		})
 }
 
@@ -33,11 +33,11 @@ function loadSheetData() {
 				if (data && data.length) {
 					displayData(data)
 				} else {
-					console.log('No data found.')
+					console.log('Дані не знайдено.')
 				}
 			},
 			function (error) {
-				console.log('Error: ' + error.result.error.message)
+				console.log('Помилка: ' + error.result.error.message)
 			}
 		)
 }
@@ -65,20 +65,20 @@ function displayData(data) {
 			card.appendChild(img)
 
 			let title = document.createElement('h3')
-			title.textContent = row[1] || 'Нет названия'
+			title.textContent = row[1] || 'Немає назви'
 			card.appendChild(title)
 
 			let description = document.createElement('p')
-			description.textContent = row[2] || 'Описание отсутствует'
+			description.textContent = row[2] || 'Опис відсутній'
 			card.appendChild(description)
 
 			let price = document.createElement('p')
 			price.classList.add('price')
-			price.textContent = row[3] ? `${row[3]} грн` : 'Цена не указана'
+			price.textContent = row[3] ? `${row[3]} грн` : 'Ціна не вказана'
 			card.appendChild(price)
 
 			let button = document.createElement('button')
-			button.textContent = 'Купить'
+			button.textContent = 'Купити'
 			button.onclick = function () {
 				addToCart(imageUrl, row[1], row[3])
 			}
@@ -112,7 +112,7 @@ function updateCartUI() {
 		cartItem.appendChild(name)
 
 		let price = document.createElement('p')
-		price.textContent = item.price ? `${item.price} грн` : 'Цена не указана'
+		price.textContent = item.price ? `${item.price} грн` : 'Ціна не вказана'
 		cartItem.appendChild(price)
 
 		cartContainer.appendChild(cartItem)
@@ -136,11 +136,12 @@ function clearCart() {
 	localStorage.setItem('cart', JSON.stringify(cart))
 	updateCartUI()
 }
+
 function updateCartUI() {
 	let cartContainer = document.getElementById('cartContainer')
 	cartContainer.innerHTML = ''
 
-	let total = 0 // Сумма всех товаров
+	let total = 0 // Загальна сума всіх товарів
 
 	cart.forEach((item, index) => {
 		let cartItem = document.createElement('div')
@@ -155,10 +156,10 @@ function updateCartUI() {
 		cartItem.appendChild(name)
 
 		let price = document.createElement('p')
-		price.textContent = item.price ? `${item.price} грн` : 'Цена не указана'
+		price.textContent = item.price ? `${item.price} грн` : 'Ціна не вказана'
 		cartItem.appendChild(price)
 
-		// Добавляем кнопку удаления товара
+		// Додаємо кнопку видалення товару
 		let removeBtn = document.createElement('button')
 		removeBtn.textContent = 'X'
 		removeBtn.onclick = function () {
@@ -168,15 +169,15 @@ function updateCartUI() {
 
 		cartContainer.appendChild(cartItem)
 
-		// Считаем сумму
+		// Рахуємо загальну суму
 		if (item.price) {
 			total += parseFloat(item.price)
 		}
 	})
 
-	// Отображаем общую сумму
+	// Відображаємо загальну суму
 	let totalElement = document.createElement('p')
-	totalElement.textContent = `Общая сумма: ${total} грн`
+	totalElement.textContent = `Загальна сума: ${total} грн`
 	totalElement.style.fontWeight = 'bold'
 	totalElement.style.marginTop = '10px'
 	cartContainer.appendChild(totalElement)
@@ -184,33 +185,35 @@ function updateCartUI() {
 	document.getElementById('cartCount').textContent = cart.length
 }
 
-// Функция для удаления товара из корзины
+// Функція для видалення товару з кошика
 function removeFromCart(index) {
 	cart.splice(index, 1)
 	localStorage.setItem('cart', JSON.stringify(cart))
 	updateCartUI()
 }
+
 function sendOrderToTelegram() {
 	if (cart.length === 0) {
-		alert('Ваша корзина пуста!')
+		alert('Ваш кошик порожній!')
 		return
 	}
 
 	let totalPrice = 0
-	let orderText = '🛒 *Ваш заказ:*\n\n'
+	let orderText = '🛒 *Ваше замовлення:*\n\n'
 
 	cart.forEach((item, index) => {
 		orderText += `${index + 1}. ${item.name} - ${item.price} грн\n`
 		totalPrice += parseFloat(item.price)
 	})
 
-	orderText += `\n💰 *Общая сумма: ${totalPrice} грн*`
+	orderText += `\n💰 *Загальна сума: ${totalPrice} грн*`
 
 	let encodedText = encodeURIComponent(orderText)
 	let telegramLink = `https://t.me/nicestbeer?text=${encodedText}`
 
 	window.open(telegramLink, '_blank')
 }
+
 let lastScrollTop = 0
 const header = document.querySelector('header')
 
@@ -218,9 +221,9 @@ window.addEventListener('scroll', function () {
 	let scrollTop = window.scrollY || document.documentElement.scrollTop
 
 	if (scrollTop > lastScrollTop && scrollTop > 50) {
-		header.style.transform = 'translateY(-100%)' // Прячем хедер
+		header.style.transform = 'translateY(-100%)' // Ховаємо хедер
 	} else {
-		header.style.transform = 'translateY(0)' // Показываем хедер
+		header.style.transform = 'translateY(0)' // Показуємо хедер
 	}
 
 	lastScrollTop = scrollTop
@@ -241,3 +244,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.scrollTo({ top: 0, behavior: 'smooth' })
 	})
 })
+function showNotification(message) {
+	let notification = document.getElementById('notification')
+	notification.textContent = message
+	notification.style.display = 'block'
+
+	setTimeout(() => {
+		notification.style.display = 'none'
+	}, 2000)
+}
+function addToCart(image, name, price) {
+	cart.push({ image, name, price })
+	localStorage.setItem('cart', JSON.stringify(cart))
+	updateCartUI()
+	showNotification('✅ Товар додано в кошик!')
+}
