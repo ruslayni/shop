@@ -199,14 +199,14 @@ function sendOrderToTelegram() {
 	}
 
 	let totalPrice = 0
-	let orderText = '🛒 *Ваше замовлення:*\n\n'
+	let orderText = '🛒 Ваше замовлення:\n\n'
 
 	cart.forEach((item, index) => {
 		orderText += `${index + 1}. ${item.name} - ${item.price} грн\n`
 		totalPrice += parseFloat(item.price)
 	})
 
-	orderText += `\n💰 *Загальна сума: ${totalPrice} грн*`
+	orderText += `\n💰 Загальна сума: ${totalPrice} грн`
 
 	let encodedText = encodeURIComponent(orderText)
 	let telegramLink = `https://t.me/nicestbeer?text=${encodedText}`
@@ -258,4 +258,45 @@ function addToCart(image, name, price) {
 	localStorage.setItem('cart', JSON.stringify(cart))
 	updateCartUI()
 	showNotification('✅ Товар додано в кошик!')
+}
+document.addEventListener('DOMContentLoaded', function () {
+	createFallingHearts()
+})
+
+function createFallingHearts() {
+	setInterval(() => {
+		const heart = document.createElement('div')
+		heart.classList.add('heart')
+		heart.innerHTML = '❤️'
+		heart.style.left = Math.random() * 100 + 'vw'
+		heart.style.animationDuration = Math.random() * 3 + 2 + 's' // От 2 до 5 секунд
+		document.getElementById('heartsContainer').appendChild(heart)
+
+		setTimeout(() => {
+			heart.remove()
+		}, 5000)
+	}, 300)
+}
+
+function toggleCart() {
+	let cartModal = document.getElementById('cartModal')
+	cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex'
+}
+
+function closeCart() {
+	document.getElementById('cartModal').style.display = 'none'
+}
+
+function scrollToTop() {
+	window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function showNotification(message) {
+	let notification = document.getElementById('notification')
+	notification.textContent = message
+	notification.style.display = 'block'
+
+	setTimeout(() => {
+		notification.style.display = 'none'
+	}, 2000)
 }

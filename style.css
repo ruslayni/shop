@@ -1,51 +1,55 @@
+/* Общие стили */
 body {
 	font-family: Arial, sans-serif;
+	background-color: #ffe4e1; /* Розовый фон */
+	color: #d63384;
 	margin: 0;
-	padding: 0;
-	background-color: #f8f9fa;
+	padding: 60px 0 0; /* Учитываем фиксированный header */
 }
 
-h1 {
-	text-align: center;
-}
-body {
-	padding-top: 60px; /* Отступ, чтобы контент не прилипал к хедеру */
-}
-
-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: #333;
-	z-index: 1000;
-	transform: translateY(0);
-	transition: transform 0.3s ease-in-out;
-}
-
-/* Делаем отступ больше для мобильных устройств */
+/* Адаптивный отступ для мобильных устройств */
 @media (max-width: 768px) {
 	body {
 		padding-top: 80px;
 	}
 }
 
-nav {
-	background-color: #333;
-	padding: 10px;
+/* Заголовок */
+h1 {
+	text-align: center;
+	color: #c2185b;
 }
 
+/* Хедер */
+header {
+	background-color: #ff4081;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+	transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Навигация */
 nav ul {
 	list-style: none;
 	display: flex;
 	justify-content: space-around;
+	padding: 0;
 }
 
 nav a {
 	color: white;
 	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
 }
 
+nav a:hover {
+	color: #ffe4e1;
+}
+
+/* Контейнер с продуктами */
 #productsContainer {
 	display: flex;
 	flex-wrap: wrap;
@@ -54,11 +58,12 @@ nav a {
 	padding: 20px;
 }
 
+/* Карточка товара */
 .product-card {
 	background-color: white;
 	padding: 15px;
 	border-radius: 8px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	width: 250px;
 	text-align: center;
 }
@@ -70,29 +75,89 @@ nav a {
 	border-radius: 5px;
 }
 
+/* Цена */
 .price {
 	font-weight: bold;
 	color: green;
 }
 
+/* Кнопки */
 button {
-	background-color: #007bff;
+	background-color: #ff4081;
 	color: white;
 	border: none;
 	padding: 10px;
 	cursor: pointer;
-	margin-top: 10px;
+	border-radius: 20px;
+	transition: background-color 0.3s ease-in-out;
 }
 
 button:hover {
-	background-color: #0056b3;
+	background-color: #e91e63;
+}
+
+/* Кнопка прокрутки вверх */
+#scrollToTopBtn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #333;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: none;
+	font-size: 16px;
+	z-index: 1000;
+	transition: background-color 0.3s ease-in-out;
+}
+
+#scrollToTopBtn:hover {
+	background-color: #555;
+}
+
+/* Оповещения */
+.notification {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #28a745;
+	color: white;
+	padding: 15px;
+	border-radius: 5px;
+	display: none;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 1.5s forwards;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 }
 
 /* Корзина */
 .cart-modal {
 	display: none;
 	position: fixed;
-
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -100,6 +165,17 @@ button:hover {
 	background-color: rgba(0, 0, 0, 0.5);
 	justify-content: center;
 	align-items: center;
+}
+
+.cart-content {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	text-align: center;
+	width: 400px;
+	max-width: 90%;
+	max-height: 80vh;
+	overflow-y: auto;
 }
 
 .cart-item {
@@ -123,70 +199,38 @@ button:hover {
 	border: none;
 	padding: 5px 10px;
 	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .cart-item button:hover {
 	background-color: darkred;
 }
-.cart-content {
-	background-color: white;
-	padding: 20px;
-	border-radius: 8px;
-	text-align: center;
-	width: 400px;
-	max-width: 90%;
-	max-height: 80vh; /* Ограничение по высоте */
-	overflow-y: auto; /* Прокрутка при большом количестве товаров */
-}
-#scrollToTopBtn {
+
+/* Анимация падающих сердечек */
+#heartsContainer {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background-color: #333;
-	color: white;
-	border: none;
-	padding: 10px 15px;
-	border-radius: 5px;
-	cursor: pointer;
-	display: none;
-	font-size: 16px;
-	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+	overflow: hidden;
 }
 
-#scrollToTopBtn:hover {
-	background-color: #555;
-}
-.notification {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background-color: #28a745;
-	color: white;
-	padding: 15px;
-	border-radius: 5px;
-	display: none;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 1.5s forwards;
+.heart {
+	position: absolute;
+	color: #ff1744;
+	font-size: 24px;
+	animation: fall 4s linear infinite;
 }
 
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-	to {
+@keyframes fall {
+	0% {
+		transform: translateY(0) scale(1);
 		opacity: 1;
-		transform: translateY(0);
 	}
-}
-
-@keyframes fadeOut {
-	from {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	to {
+	100% {
+		transform: translateY(100vh) scale(0.5);
 		opacity: 0;
-		transform: translateY(10px);
 	}
 }

@@ -3,12 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-		<title>Магазин</title>
+		<title>Магазин з любов'ю ❤️</title>
 		<link rel="stylesheet" href="style.css" />
-		<link rel="icon" href="logo_white.png" image/png" />
+		<link rel="icon" href="logo_white.png" image/png">
 	</head>
 	<body>
 		<header>
@@ -24,11 +21,11 @@
 			</nav>
 		</header>
 
-		<h1>Каталог товарів</h1>
+		<h1></h1>
+
 		<div id="productsContainer"></div>
 
-		<!-- Кошик -->
-		<div id="cartModal" class="cart-modal" style="display: none">
+		<div id="cartModal" class="cart-modal">
 			<div class="cart-content">
 				<h2>Кошик</h2>
 				<div id="cartContainer"></div>
@@ -38,10 +35,14 @@
 				<button onclick="sendOrderToTelegram()">Перейти до замовлення</button>
 			</div>
 		</div>
+
 		<button id="scrollToTopBtn" onclick="scrollToTop()">⬆</button>
 		<div id="notification" class="notification"></div>
 
+		<!-- Контейнер для падающих сердечек -->
+		<div id="heartsContainer"></div>
 		<script src="https://apis.google.com/js/api.js"></script>
+
 		<script src="script.js"></script>
 	</body>
 </html>
