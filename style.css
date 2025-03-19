@@ -1,28 +1,24 @@
-/* Общие стили */
 body {
 	font-family: Arial, sans-serif;
-	background-color: #ffe4e1; /* Розовый фон */
-	color: #d63384;
+	background-color: #e8f5e9;
+	color: #2e7d32;
 	margin: 0;
-	padding: 60px 0 0; /* Учитываем фиксированный header */
+	padding: 60px 0 0;
 }
 
-/* Адаптивный отступ для мобильных устройств */
 @media (max-width: 768px) {
 	body {
 		padding-top: 80px;
 	}
 }
 
-/* Заголовок */
 h1 {
 	text-align: center;
-	color: #c2185b;
+	color: #388e3c;
 }
 
-/* Хедер */
 header {
-	background-color: #ff4081;
+	background-color: #66bb6a;
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -30,7 +26,6 @@ header {
 	transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Навигация */
 nav ul {
 	list-style: none;
 	display: flex;
@@ -46,10 +41,9 @@ nav a {
 }
 
 nav a:hover {
-	color: #ffe4e1;
+	color: #c8e6c9;
 }
 
-/* Контейнер с продуктами */
 #productsContainer {
 	display: flex;
 	flex-wrap: wrap;
@@ -58,7 +52,6 @@ nav a:hover {
 	padding: 20px;
 }
 
-/* Карточка товара */
 .product-card {
 	background-color: white;
 	padding: 15px;
@@ -75,15 +68,13 @@ nav a:hover {
 	border-radius: 5px;
 }
 
-/* Цена */
 .price {
 	font-weight: bold;
-	color: green;
+	color: #1b5e20;
 }
 
-/* Кнопки */
 button {
-	background-color: #ff4081;
+	background-color: #8bc34a;
 	color: white;
 	border: none;
 	padding: 10px;
@@ -93,15 +84,14 @@ button {
 }
 
 button:hover {
-	background-color: #e91e63;
+	background-color: #689f38;
 }
 
-/* Кнопка прокрутки вверх */
 #scrollToTopBtn {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	background-color: #333;
+	background-color: #2e7d32;
 	color: white;
 	border: none;
 	padding: 10px 15px;
@@ -114,15 +104,14 @@ button:hover {
 }
 
 #scrollToTopBtn:hover {
-	background-color: #555;
+	background-color: #1b5e20;
 }
 
-/* Оповещения */
 .notification {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	background-color: #28a745;
+	background-color: #4caf50;
 	color: white;
 	padding: 15px;
 	border-radius: 5px;
@@ -131,7 +120,6 @@ button:hover {
 	animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 1.5s forwards;
 }
 
-/* Анимация */
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -154,7 +142,6 @@ button:hover {
 	}
 }
 
-/* Корзина */
 .cart-modal {
 	display: none;
 	position: fixed;
@@ -194,7 +181,7 @@ button:hover {
 }
 
 .cart-item button {
-	background-color: red;
+	background-color: #f44336;
 	color: white;
 	border: none;
 	padding: 5px 10px;
@@ -203,10 +190,9 @@ button:hover {
 }
 
 .cart-item button:hover {
-	background-color: darkred;
+	background-color: #d32f2f;
 }
 
-/* Анимация падающих сердечек */
 #heartsContainer {
 	position: fixed;
 	top: 0;
@@ -219,7 +205,7 @@ button:hover {
 
 .heart {
 	position: absolute;
-	color: #ff1744;
+	color: #ff80ab;
 	font-size: 24px;
 	animation: fall 4s linear infinite;
 }
